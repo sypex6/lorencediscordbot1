@@ -176,15 +176,16 @@ class LimitModal(discord.ui.Modal, title="Лимит участников"):
 
 
 class BitrateModal(discord.ui.Modal, title="Битрейт канала"):
-    bitrate = discord.ui.TextInput(label="Битрейт в кбит/с (8–384)", placeholder="Например: 64", max_length=3)
+    bitrate = discord.ui.TextInput(label="Битрейт в кбит/с (8–96)", placeholder="Например: 64", max_length=2)
 
     async def on_submit(self, interaction: discord.Interaction):
         try:
-            n = max(8, min(int(str(self.bitrate)), 384))
+            n = max(8, min(int(str(self.bitrate)), 96))
             await interaction.user.voice.channel.edit(bitrate=n * 1000)
             await interaction.response.send_message(f"✅ Битрейт: **{n} кбит/с**.", ephemeral=True)
         except ValueError:
             await interaction.response.send_message("❌ Введи число.", ephemeral=True)
+
 
 
 # ──────────────────────────────────────────────
