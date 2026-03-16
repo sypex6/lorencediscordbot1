@@ -250,12 +250,14 @@ async def on_ready():
     await bot.change_presence(status=discord.Status.online, activity=discord.Activity(
         type=discord.ActivityType.playing, name="Roblox"
     ))
-    guild = discord.Object(id=GUILD_ID)  # ← вставь свой Guild ID
+    guild = discord.Object(id=GUILD_ID)
+    bot.tree.clear_commands(guild=None)
+    bot.tree.clear_commands(guild=guild)
     bot.tree.copy_global_to(guild=guild)
     synced = await bot.tree.sync(guild=guild)
+    await bot.tree.sync(guild=None)
     print(f"✅ Бот запущен как {bot.user}")
     print(f"🔄 Синхронизировано {len(synced)} slash-команд")
-
 
 # ──────────────────────────────────────────────
 # Slash-команды
