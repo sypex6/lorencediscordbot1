@@ -304,4 +304,7 @@ bot.tree.add_command(voice_group)
 # ──────────────────────────────────────────────
 GUILD_ID = 1390757190524207214  # ← вставь ID своего сервера сюда
 
-bot.run("MTQ4MzE2MDcwNDQ5OTMyMzAzMg.GrdLd3.FG93O1Hq9kym5qLukC1E7a-nG4MwW1H1SDo_xs")
+from dotenv import load_dotenv
+import os
+load_dotenv()
+bot.run(os.getenv("DISCORD_TOKEN"))
