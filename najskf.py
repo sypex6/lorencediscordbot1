@@ -37,7 +37,7 @@ class ChannelSettingsSelect(discord.ui.Select):
             discord.SelectOption(label="Изменить битрейт",      value="bitrate",  emoji="🎵"),
             discord.SelectOption(label="Передать владение",     value="transfer", emoji="👑"),
         ]
-        super().__init__(placeholder="Change channel settings", options=options)
+        super().__init__(placeholder="Изменить настройки канала", options=options)
 
     async def callback(self, interaction: discord.Interaction):
         if not is_owner(interaction):
@@ -70,7 +70,7 @@ class ChannelPermissionsSelect(discord.ui.Select):
             discord.SelectOption(label="Разрешить пользователю",value="permit",   emoji="✅"),
             discord.SelectOption(label="Выгнать пользователя",  value="reject",   emoji="🚫"),
         ]
-        super().__init__(placeholder="Change channel permissions", options=options)
+        super().__init__(placeholder="Изменить права канала", options=options)
 
     async def callback(self, interaction: discord.Interaction):
         if not is_owner(interaction):
@@ -116,7 +116,7 @@ class PanelButtons(discord.ui.View):
         self.add_item(ChannelSettingsSelect())
         self.add_item(ChannelPermissionsSelect())
 
-    @discord.ui.button(label="Claim", emoji="👑", style=discord.ButtonStyle.secondary, custom_id="btn_claim")
+    @discord.ui.button(label="Получить", emoji="👑", style=discord.ButtonStyle.secondary, custom_id="btn_claim")
     async def claim(self, interaction: discord.Interaction, button: discord.ui.Button):
         if not interaction.user.voice:
             return await interaction.response.send_message("❌ Ты не в голосовом канале.", ephemeral=True)
@@ -129,7 +129,7 @@ class PanelButtons(discord.ui.View):
         temp_channels[channel.id] = interaction.user.id
         await interaction.response.send_message("👑 Ты теперь владелец канала.", ephemeral=True)
 
-    @discord.ui.button(label="Kick", emoji="🥾", style=discord.ButtonStyle.secondary, custom_id="btn_kick")
+    @discord.ui.button(label="Выгнать", emoji="🥾", style=discord.ButtonStyle.secondary, custom_id="btn_kick")
     async def kick(self, interaction: discord.Interaction, button: discord.ui.Button):
         if not is_owner(interaction):
             return await interaction.response.send_message("❌ Ты не владелец этого канала.", ephemeral=True)
@@ -137,7 +137,7 @@ class PanelButtons(discord.ui.View):
             "Используй `/voice reject @пользователь` для кика.", ephemeral=True
         )
 
-    @discord.ui.button(label="Info", emoji="ℹ️", style=discord.ButtonStyle.secondary, custom_id="btn_info")
+    @discord.ui.button(label="Инфо", emoji="ℹ️", style=discord.ButtonStyle.secondary, custom_id="btn_info")
     async def info(self, interaction: discord.Interaction, button: discord.ui.Button):
         if not interaction.user.voice:
             return await interaction.response.send_message("❌ Ты не в голосовом канале.", ephemeral=True)
