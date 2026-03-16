@@ -192,16 +192,16 @@ class BitrateModal(discord.ui.Modal, title="Битрейт канала"):
 # ──────────────────────────────────────────────
 def make_panel_embed() -> discord.Embed:
     embed = discord.Embed(
-        title="⚙️ Welcome to your own temporary voice channel",
+        title="⚙️ Добро пожаловать в ваш собственный временный голосовой канал!",
         description=(
-            "Control your channel using the menus below\n"
-            "• Use the dropdowns to manage settings and permissions\n"
-            "• Alternatively use `/voice` commands"
+            "Управляйте своим каналом с помощью меню ниже.\n"
+            "• Используйте выпадающие списки для управления настройками и правами доступа.\n"
+            "• Или используйте команды /voice."
         ),
         color=0xF5C400
     )
-    embed.add_field(name="Channel Settings", value="Use the dropdown below to rename, set limit, bitrate or transfer ownership.", inline=False)
-    embed.add_field(name="Channel Permissions", value="Use the dropdown below to lock, hide or manage user access.", inline=False)
+    embed.add_field(name="Настройки канала", value="Используйте выпадающее меню ниже, чтобы переименовать канал, установить ограничение, битрейт или передать права собственности.", inline=False)
+    embed.add_field(name="Права доступа к каналу", value="Используйте выпадающее меню ниже, чтобы заблокировать, скрыть или управлять доступом пользователей.", inline=False)
     embed.set_thumbnail(url="https://cdn.discordapp.com/emojis/852793370561044531.png")
     return embed
 
