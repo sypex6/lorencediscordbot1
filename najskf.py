@@ -298,9 +298,9 @@ async def voice_transfer(interaction: discord.Interaction, user: discord.Member)
     temp_channels[channel.id] = user.id
     await interaction.response.send_message(f"👑 Владение передано {user.mention}.", ephemeral=True)
 
-@bot.tree.command(name="бургер", description="Получить бургер")
+@bot.tree.command(name="похулиганить", description="Хулиганить в интернете")
 async def burger(interaction: discord.Interaction):
-    await interaction.response.send_message("Пошел нахуй")
+    await interaction.response.send_message("https://media.discordapp.net/attachments/1197906194434641920/1203069481803579442/IMG_20231129_180055_421.gif?ex=69b90c04&is=69b7ba84&hm=f5f769e8844e027f06b476b46126564e8a10374e34b3a161d889c01ac27d7eab&=&width=900&height=581")
     
 bot.tree.add_command(voice_group)
 
